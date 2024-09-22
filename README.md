@@ -17,6 +17,7 @@ Clone the repository or download the files as a ZIP and extract them.
 
 ```bash
 git clone https://github.com/your-repo/chalkboard-extension.git
+```
 Alternatively, download the ZIP and extract it:
 
 Click on the green "Code" button on GitHub.
@@ -29,6 +30,7 @@ Go to the extensions page by entering the following URL in your address bar:
 
 ```
 chrome://extensions/
+```
 
 Enable Developer Mode by toggling the switch in the top-right corner of the page.
 
@@ -47,20 +49,23 @@ Use the Clear button to erase the canvas and reset the board.
 ###  Step 5: (Optional) Customize the Extension
 You can customize the extension by modifying the following files:
 
-popup.html: Adjust the structure of the popup.
-popup.js: Modify the drawing functionality and add more features.
-style.css: Change the appearance of the canvas and buttons.
+`popup.html`: Adjust the structure of the popup.
+`popup.js`: Modify the drawing functionality and add more features.
+`style.css`: Change the appearance of the canvas and buttons.
 
 Icons
 You can replace the default icons by adding your own in the icons/ folder. The following sizes are used:
 
-icon16.png: 16x16 pixels
-icon48.png: 48x48 pixels
-icon128.png: 128x128 pixels
+`icon16.png`: 16x16 pixels
+`icon48.png`: 48x48 pixels
+`icon128.png`: 128x128 pixels
+
 Uninstalling the Extension
-Go to the chrome://extensions/ page.
+
+Go to the `chrome://extensions/` page.
 Find the Chalkboard Drawing extension.
 Click on the Remove button to uninstall it.
+
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
