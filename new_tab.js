@@ -4,21 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let drawing = false;
   let isDarkMode = false;
 
+  // Function to resize canvas to fill the window
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Restore saved drawing after resizing
+    const savedDrawing = localStorage.getItem("chalkboard_drawing");
+    if (savedDrawing) {
+      const img = new Image();
+      img.src = savedDrawing;
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+    }
+  }
+
+  // Initial canvas resize
+  resizeCanvas();
+
+  // Adjust canvas size on window resize
+  window.addEventListener('resize', resizeCanvas);
+
   // Set initial drawing settings (Light mode by default)
   ctx.strokeStyle = "black";
   ctx.lineWidth = 2;
   ctx.lineCap = "round";
   canvas.style.backgroundColor = "white";
-
-  // Restore the drawing from local storage if it exists
-  const savedDrawing = localStorage.getItem("chalkboard_drawing");
-  if (savedDrawing) {
-    const img = new Image();
-    img.src = savedDrawing;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
-  }
 
   // Mouse events to control drawing
   canvas.addEventListener("mousedown", (e) => {
@@ -106,11 +118,5 @@ document.addEventListener("DOMContentLoaded", () => {
       invertCanvasColors();  // Invert the colors of the drawing back
       toggleModeButton.textContent = "Switch to Dark Mode";
     }
-  });
-
-  // Open the full canvas in a new tab
-  const openNewTabButton = document.getElementById("openNewTabButton");
-  openNewTabButton.addEventListener("click", () => {
-    chrome.tabs.create({ url: chrome.runtime.getURL('new_tab.html') });
   });
 });
